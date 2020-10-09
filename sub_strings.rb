@@ -1,14 +1,17 @@
 # sub_strings.rb
 
+def count_substr_occurences(string, substring)
+  return string.scan(/(?=#{substring})/).count
+end
+
 def substrings(word, subs)
 #require 'pry'; binding.pry # pry break point
-  substring_counts = subs.reduce(Hash.new(0)) do |counter, substring|
+  return subs.reduce(Hash.new(0)) do |counter, substring|
     if word.include?(substring)
-      counter[substring] = word.scan(/(?=#{substring})/).count
-	end
+      counter[substring] = count_substr_occurences(word, substring)
+    end
     counter
   end
-  return substring_counts
 end
 
 word = "BeLowlow"
