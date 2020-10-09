@@ -1,22 +1,17 @@
 # sub_strings.rb
 
-#def substrings(word, subs)
+def substrings(word, subs)
 #require 'pry'; binding.pry # pry break point
-#  subs.reduce(Hash.new(0)) do |counter, substring|
-#    counter[substring] += 1
-#  end
-#  return counter
-#end
-
-#word = "below"
-#dictionary = 
-
-#p substrings(word, dictionary)
-dictionary = %w(below down go going horn how howdy it i low own part partner sit below)
-
-substring_counts = dictionary.reduce(Hash.new(0)) do |counter, substring|
-  counter[substring] += 1
-  counter
+  substring_counts = subs.reduce(Hash.new(0)) do |counter, substring|
+    if word.include?(substring)
+      counter[substring] = word.scan(/(?=#{substring})/).count
+	end
+    counter
+  end
+  return substring_counts
 end
 
-p substring_counts
+word = "BeLowlow"
+dictionary = %w(below down go going horn how howdy it i low own part partner sit)
+
+p substrings(word.downcase, dictionary)
