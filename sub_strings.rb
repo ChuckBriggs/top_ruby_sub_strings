@@ -14,7 +14,7 @@ def substrings(word, subs)
   end
 end
 
-word = "BeLowlow"
+word = "Howdy partner, sit down! How's it going?"
 dictionary = %w(below down go going horn how howdy it i low own part partner sit)
 
 p substrings(word.downcase, dictionary)
